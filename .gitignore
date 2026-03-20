@@ -1,0 +1,43 @@
+# ==========================================
+# Python & Jupyter (The Software Plane)
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+*.env
+venv/
+env/
+
+# ==========================================
+# Xilinx Vivado & Vitis (The Hardware Plane)
+# ==========================================
+# Ignore Vivado project files and directories
+*.xpr
+*.jou
+*.log
+*.str
+*.pb
+*.wdb
+*.wcfg
+*.wdf
+*.dir/
+.Xil/
+*.hw/
+*.sim/
+*.runs/
+*.cache/
+*.ip_user_files/
+*.gen/
+
+# Ignore compiled bitstreams and handoff files (These go in GitHub Releases!)
+*.bit
+*.hwh
+*.xsa
+*.bin
+
+# ==========================================
+# OS & VS Code
+# ==========================================
+.DS_Store
+Thumbs.db
