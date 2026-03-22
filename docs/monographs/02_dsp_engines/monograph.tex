@@ -1,0 +1,22 @@
+\documentclass[11pt]{article}
+
+\input{../shared/preamble.tex}
+\input{../shared/macros.tex}
+
+\title{Monograph 02: DSP Engines}
+\author{Radar PHY and FPGA Architecture Study}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This monograph introduces the DSP engine chain implemented in programmable logic, including waveform synthesis, pulse compression, filtering, and detection primitives. Emphasis is placed on mathematically rigorous derivations and the practical mapping of each stage onto DSP slice resources with bounded latency.
+
+The treatment links algorithmic performance to hardware observables, including quantization effects on \SNR, fixed-point scaling in \dBFS, and the resulting impact on end-to-end \ENOB.
+
+\bibliographystyle{ieeetr}
+\bibliography{../shared/references}
+
+\end{document}

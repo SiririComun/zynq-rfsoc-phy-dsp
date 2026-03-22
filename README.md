@@ -17,14 +17,20 @@ Using the **AMD/Xilinx Zynq-7000** (PYNQ-Z1/Arty-Z7) and **RFSoC** platforms, I 
 *   📂 **`gateware/`**: Hardware Plane (PL). Custom VHDL/Verilog, AXI IPs, and Vivado TCL build scripts.
 *   📂 **`notebooks/`**: Software Plane (PS). Python drivers and Jupyter-based signal analysis.
 
-## 📍 Research Checkpoints (Evolving)
-- [x] **Checkpoint 1:** Theoretical Foundations.
-  - *Monograph 1:* SoC Architecture for Radar/Telecom Researchers.
-  - *Monograph 2:* The PYNQ Paradigm: Bridging Python and Silicon.
-- [ ] **Checkpoint 2:** The Control Plane (AXI4-Lite Register Bridge).
-- [ ] **Checkpoint 3:** The Data Plane (AXI DMA Streaming & Memory Management).
-- [ ] **Checkpoint 4:** Hardware-Accelerated DSP (Compute Plane Benchmarking).
-- [ ] **Checkpoint 5+:** *To be defined by thesis specialization (Radar/6G/SDR).*
+## 📍 Research Roadmap
+
+I am following a **Parallel Track** development model, prioritizing hardware prototyping to maximize laboratory access while developing theoretical monographs in tandem.
+
+### 🛠️ Track A: Hardware & Silicon (Active)
+- [▶️] **Checkpoint 1:** The Control Plane (AXI4-Lite Register Bridge). <!-- CURRENT FOCUS -->
+- [ ] **Checkpoint 2:** The Data Plane (AXI DMA Streaming & Memory Management).
+- [ ] **Checkpoint 3:** The Compute Plane (Hardware-Accelerated DSP Benchmarking).
+- [ ] **Checkpoint 4:** Real-Time Acquisition (XADC & Spectral Visualization).
+
+### 📚 Track B: Theory & Documentation (In Progress)
+- [ ] **Monograph 1:** SoC Architecture for Radar/Telecom Researchers.
+- [ ] **Monograph 2:** The PYNQ Paradigm: Bridging Python and Silicon.
+- [ ] **Thesis Manuscript:** Physical Layer DSP on Heterogeneous Architectures.
 
 ## ⚖️ Licensing
 *   **Gateware & Software:** [MIT License](LICENSE)

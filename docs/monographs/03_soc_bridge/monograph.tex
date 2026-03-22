@@ -1,0 +1,22 @@
+\documentclass[11pt]{article}
+
+\input{../shared/preamble.tex}
+\input{../shared/macros.tex}
+
+\title{Monograph 03: SoC Bridge}
+\author{Radar PHY and FPGA Architecture Study}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This monograph examines the SoC bridge between processing system and programmable logic, focusing on control and data-plane interactions across AXI protocol families. It sets the foundation for a consistent memory-map methodology that aligns low-rate register control with high-rate \AXIStream transport.
+
+The narrative highlights integration constraints that govern reliable software-hardware exchange for \IandQ pipelines while maintaining deterministic behavior under practical bandwidth and latency budgets.
+
+\bibliographystyle{ieeetr}
+\bibliography{../shared/references}
+
+\end{document}

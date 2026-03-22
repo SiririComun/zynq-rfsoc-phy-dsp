@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}
+
+\input{../shared/preamble.tex}
+\input{../shared/macros.tex}
+
+\title{Monograph 01: Spatial Logic}
+\author{Radar PHY and FPGA Architecture Study}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This monograph frames the spatial logic perspective of radar gateware realization, from logic-cell granularity up through CLB and die-level organization. The discussion establishes how placement pressure, routing locality, and timing closure shape deterministic throughput for \AXIStream data movement and coherent \IandQ signal transport.
+
+The objective is to map architectural intent into physically realizable structures while preserving signal fidelity metrics such as \SNR, dynamic range in \dBFS, and converter effectiveness in \ENOB.
+
+\section{Temporal vs. Spatial Computing: The Physics of Determinism}
+
+\subsection{The Speed of Light Constraint in Radar Timing}
+\textbf{Derivation outline.}
+For a monostatic radar, range is inferred from round-trip time-of-flight:
+\begin{equation}
+R=\frac{ct}{2}.
+\end{equation}
+A timing perturbation \(\Delta t\) maps directly to a range perturbation:
+\begin{equation}
+\Delta R=\frac{c\Delta t}{2}.
+\end{equation}
+
+\textbf{Numerical checkpoints.}
+\begin{itemize}
+  \item For \(\Delta t=\SI{100}{\nano\second}\): \(c\Delta t\approx\SI{30}{\meter}\) propagation-path ambiguity, hence \(\Delta R\approx\SI{15}{\meter}\) range ambiguity in monostatic operation.
+  \item For \(\Delta t=\SI{1}{\nano\second}\): \(c\Delta t\approx\SI{0.30}{\meter}\), hence \(\Delta R\approx\SI{0.15}{\meter}\).
+\end{itemize}
+These checkpoints motivate nanosecond-class deterministic timing when coherent \IandQ processing must preserve stable range bins and integration phase.
+
+\subsection{The Von Neumann Bottleneck at the PHY Boundary}
+\textbf{Temporal execution model.}
+Conventional CPUs execute a fetch-decode-execute stream over shared memory and interconnect resources. Latency is shaped by instruction flow, cache state, and branch behavior, which are optimized for average throughput rather than strict cycle-by-cycle guarantees.
+
+\textbf{PHY mismatch points.}
+\begin{itemize}
+  \item Interrupt preemption introduces latency outliers.
+  \item OS scheduler decisions create variable service intervals.
+  \item Cache misses and bus arbitration cause nonuniform access latency.
+  \item DMA completion timing can drift relative to sample-clock boundaries.
+\end{itemize}
+At the PHY layer, bounded worst-case latency is required; average latency is insufficient for deterministic sample-aligned operation.
+
+\subsection{Spatial Computing on FPGA Fabric}
+\textbf{Spatial definition.}
+In FPGA gateware, functions are physically instantiated in fabric and evaluated each clock cycle. Throughput scales via parallel placement and pipelining rather than instruction retirement.
+
+\textbf{Silicon hierarchy framing.}
+\begin{center}
+Logic Cell \(\rightarrow\) Slice \(\rightarrow\) CLB \(\rightarrow\) Column \(\rightarrow\) Die
+\end{center}
+
+\textbf{Determinism mechanism.}
+Fixed routing, fixed pipeline depth, and fixed clock-domain constraints create predictable latency for \AXIStream dataflow through radar DSP stages.
+
+\subsection{The Atomic Logic Cell: LUT and Flip-Flop}
+\textbf{6-input LUT.}
+A LUT6 is modeled as a \(2^6=64\)-entry truth-table memory. Each input vector selects a stored output value, implementing arbitrary combinational logic within timing and fanout limits.
+
+\textbf{Flip-Flop as temporal barrier.}
+The flip-flop samples LUT output on an active clock edge, creating a pipeline boundary that enables setup/hold analysis, retiming, and higher achievable \(F_{\max}\).
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[node distance=2.4cm, >=Latex]
+    \node[draw, minimum width=3.6cm, minimum height=2.0cm] (lut) {6-Input LUT\\(64-entry truth table)};
+    \node[draw, right=of lut, minimum width=2.2cm, minimum height=2.0cm] (ff) {FF};
+
+    \draw[->] ($(lut.west)+(-1.7,0.75)$) -- ($(lut.west)+(0,0.75)$) node[midway, above] {\(I_0\)};
+    \draw[->] ($(lut.west)+(-1.7,0.45)$) -- ($(lut.west)+(0,0.45)$) node[midway, above] {\(I_1\)};
+    \draw[->] ($(lut.west)+(-1.7,0.15)$) -- ($(lut.west)+(0,0.15)$) node[midway, above] {\(I_2\)};
+    \draw[->] ($(lut.west)+(-1.7,-0.15)$) -- ($(lut.west)+(0,-0.15)$) node[midway, above] {\(I_3\)};
+    \draw[->] ($(lut.west)+(-1.7,-0.45)$) -- ($(lut.west)+(0,-0.45)$) node[midway, above] {\(I_4\)};
+    \draw[->] ($(lut.west)+(-1.7,-0.75)$) -- ($(lut.west)+(0,-0.75)$) node[midway, above] {\(I_5\)};
+
+    \draw[->] (lut.east) -- node[above] {Combinational output} (ff.west);
+    \draw[->] ($(ff.south)+(0,-0.9)$) -- ($(ff.south)+(0,0)$) node[midway, right] {clk \(\uparrow\)};
+    \draw[->] (ff.east) -- ++(1.8,0) node[midway, above] {Registered output \(Q[n]\)};
+    \node[anchor=west] at ($(ff.west)+(0.15,0.35)$) {\(D\)};
+    \node[anchor=east] at ($(ff.east)+(-0.15,0.35)$) {\(Q\)};
+  \end{tikzpicture}
+  \caption{The LUT implements combinational mapping, while the flip-flop enforces cycle boundaries that make timing analyzable and deterministic.}
+  \label{fig:lut_ff_timing_boundary}
+\end{figure}
+
+\subsection{Implications for Radar Front-End Precision}
+\begin{itemize}
+  \item Deterministic timing \(\Rightarrow\) stable range-bin assignment.
+  \item Deterministic processing phase \(\Rightarrow\) coherent accumulation support.
+  \item Bounded latency \(\Rightarrow\) repeatable trigger-to-capture behavior.
+\end{itemize}
+This section establishes the physical basis for subsequent gate-level resource and timing-closure discussions.
+
+\bibliographystyle{ieeetr}
+\bibliography{../shared/references}
+
+\end{document}

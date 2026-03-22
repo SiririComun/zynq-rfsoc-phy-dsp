@@ -1,0 +1,22 @@
+\documentclass[11pt]{article}
+
+\input{../shared/preamble.tex}
+\input{../shared/macros.tex}
+
+\title{Monograph 04: PYNQ Abstraction}
+\author{Radar PHY and FPGA Architecture Study}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This monograph defines the PYNQ abstraction layer used to orchestrate radar experiments from Python while preserving hardware-aware semantics. It outlines how notebook-level interfaces expose control of timing-critical gateware blocks without obscuring protocol-level realities.
+
+The goal is to provide a reproducible software workflow that configures and interrogates \AXIStream-connected DSP pipelines carrying complex \IandQ data under measurable fidelity targets in \SNR and \dBFS.
+
+\bibliographystyle{ieeetr}
+\bibliography{../shared/references}
+
+\end{document}

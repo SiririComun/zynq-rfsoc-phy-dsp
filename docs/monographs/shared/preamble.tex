@@ -1,0 +1,62 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{siunitx}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{listings}
+
+\definecolor{codeKeyword}{RGB}{0,0,140}
+\definecolor{codeComment}{RGB}{0,100,0}
+\definecolor{codeString}{RGB}{160,20,20}
+\definecolor{codeNumber}{RGB}{90,90,90}
+\definecolor{codeBackground}{RGB}{248,248,248}
+
+\lstdefinelanguage{Verilog}{
+  morekeywords={
+    module,endmodule,input,output,inout,wire,reg,logic,assign,always,always_ff,
+    always_comb,always_latch,if,else,case,endcase,for,generate,endgenerate,
+    begin,end,parameter,localparam,typedef,struct,enum,signed,unsigned
+  },
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]"
+}
+
+\lstdefinestyle{thesiscode}{
+  backgroundcolor=\color{codeBackground},
+  basicstyle=\ttfamily\small,
+  numbers=left,
+  numberstyle=\scriptsize\color{codeNumber},
+  stepnumber=1,
+  numbersep=8pt,
+  keywordstyle=\color{codeKeyword}\bfseries,
+  commentstyle=\color{codeComment}\itshape,
+  stringstyle=\color{codeString},
+  frame=single,
+  framerule=0.4pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  tabsize=2,
+  keepspaces=true,
+  captionpos=b
+}
+
+\lstset{style=thesiscode}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
