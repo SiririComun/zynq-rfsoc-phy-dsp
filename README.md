@@ -22,8 +22,8 @@ Using the **AMD/Xilinx Zynq-7000** (PYNQ-Z1/Arty-Z7) and **RFSoC** platforms, I 
 I am following a **Parallel Track** development model, prioritizing hardware prototyping to maximize laboratory access while developing theoretical monographs in tandem.
 
 ### 🛠️ Track A: Hardware & Silicon (Active)
-- [▶️] **Checkpoint 1:** The Control Plane (AXI4-Lite Register Bridge). <!-- CURRENT FOCUS -->
-- [ ] **Checkpoint 2:** The Data Plane (AXI DMA Streaming & Memory Management).
+- [X] **Checkpoint 1:** The Control Plane (AXI4-Lite Register Bridge).
+- [▶️] **Checkpoint 2:** The Data Plane (AXI DMA Streaming & Memory Management). <!-- CURRENT FOCUS -->
 - [ ] **Checkpoint 3:** The Compute Plane (Hardware-Accelerated DSP Benchmarking).
 - [ ] **Checkpoint 4:** Real-Time Acquisition (XADC & Spectral Visualization).
 
