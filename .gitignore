@@ -44,3 +44,58 @@ Thumbs.db
 
 # Cursor AI editor metadata
 .cursor/
+
+# ==========================================
+# Python & Jupyter (The Software Plane)
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.venv/
+env/
+
+# ==========================================
+# Xilinx Vivado & Vitis (The Hardware Plane)
+# ==========================================
+# Ignore the entire Vivado Project Directory and its internal structure
+# We rely on the exported .tcl files to rebuild the design
+*.xpr
+*.cache/
+*.hw/
+*.sim/
+*.runs/
+*.ip_user_files/
+*.gen/
+*.srcs/
+*.tmp/
+
+# Ignore IP Repo internal boilerplate (keep only hdl/ and component.xml)
+**/ip_repo/**/bd/
+**/ip_repo/**/drivers/
+**/ip_repo/**/example_designs/
+**/ip_repo/**/xgui/
+
+# Ignore Vivado log and journal files
+*.jou
+*.log
+*.str
+*.pb
+*.wdb
+*.wcfg
+*.vxml
+*.dirent
+
+# Ignore compiled bitstreams and handoffs (except when forced)
+*.bit
+*.hwh
+*.xsa
+*.bin
+
+# ==========================================
+# OS & VS Code
+# ==========================================
+.DS_Store
+Thumbs.db
+.cursor/
+.vscode/

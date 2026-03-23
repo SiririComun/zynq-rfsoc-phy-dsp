@@ -23,8 +23,8 @@ I am following a **Parallel Track** development model, prioritizing hardware pro
 
 ### 🛠️ Track A: Hardware & Silicon (Active)
 - [X] **Checkpoint 1:** The Control Plane (AXI4-Lite Register Bridge).
-- [▶️] **Checkpoint 2:** The Data Plane (AXI DMA Streaming & Memory Management). <!-- CURRENT FOCUS -->
-- [ ] **Checkpoint 3:** The Compute Plane (Hardware-Accelerated DSP Benchmarking).
+- [X] **Checkpoint 2:** The Data Plane (AXI DMA Streaming & Memory Management).
+- [▶️] **Checkpoint 3:** The Compute Plane (Hardware-Accelerated DSP Benchmarking).<!-- CURRENT FOCUS -->
 - [ ] **Checkpoint 4:** Real-Time Acquisition (XADC & Spectral Visualization).
 
 ### 📚 Track B: Theory & Documentation (In Progress)
