@@ -24,8 +24,8 @@ I am following a **Parallel Track** development model, prioritizing hardware pro
 ### 🛠️ Track A: Hardware & Silicon (Active)
 - [X] **Checkpoint 1:** The Control Plane (AXI4-Lite Register Bridge).
 - [X] **Checkpoint 2:** The Data Plane (AXI DMA Streaming & Memory Management).
-- [▶️] **Checkpoint 3:** The Compute Plane (Hardware-Accelerated DSP Benchmarking).<!-- CURRENT FOCUS -->
-- [ ] **Checkpoint 4:** Real-Time Acquisition (XADC & Spectral Visualization).
+- [X] **Checkpoint 3:** The Compute Plane (Hardware-Accelerated DSP Benchmarking).
+- [▶️] **Checkpoint 4:** Real-Time Acquisition (XADC & Spectral Visualization). <!-- CURRENT FOCUS -->
 
 ### 📚 Track B: Theory & Documentation (In Progress)
 - [ ] **Monograph 1:** SoC Architecture for Radar/Telecom Researchers.
